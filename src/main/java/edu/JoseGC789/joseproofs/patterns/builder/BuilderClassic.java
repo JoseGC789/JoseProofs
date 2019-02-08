@@ -1,4 +1,4 @@
-package edu.JoseGC789.joseproofs.patterns;
+package edu.JoseGC789.joseproofs.patterns.builder;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
