@@ -21,6 +21,7 @@ final class MyDataClassic{
 
     /**
      * Force data-classes to be non-instantiable and immutable.
+     *
      * @param id
      * @param amount
      * @param reason
@@ -43,7 +44,7 @@ final class MyDataClassic{
         private String reason = "Empty";
         private LocalDateTime date = LocalDateTime.now();
 
-        public Builder(final Long id,final float amount){
+        public Builder(final Long id, final float amount){
             this.id = id;
             this.amount = amount;
         }
@@ -64,7 +65,7 @@ final class MyDataClassic{
         }
 
         public MyDataClassic build(){
-            return new MyDataClassic(id,amount,reason,date);
+            return new MyDataClassic(id, amount, reason, date);
         }
     }
 }
@@ -75,9 +76,9 @@ final class MyDataClassic{
 public class BuilderClassic{
     public static void main(String[] args){
         final MyDataClassic myDataClassic = new MyDataClassic
-                .Builder(5L,123f)
+                .Builder(5L, 123f)
                 .withReason("Alquiler")
-                .withDate(LocalDateTime.of(1994, Month.of(5),5,15,50))
+                .withDate(LocalDateTime.of(1994, Month.of(5), 5, 15, 50))
                 .build();
         System.out.println("myDataClassic = " + myDataClassic);
     }

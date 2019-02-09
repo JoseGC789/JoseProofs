@@ -22,6 +22,7 @@ final class MyDataLambda{
 
     /**
      * Force data-classes to be non-instantiable and immutable.
+     *
      * @param id
      * @param amount
      * @param reason
@@ -50,13 +51,13 @@ final class MyDataLambda{
             this.amount = amount;
         }
 
-        public Builder with (final Consumer<Builder> builderConsumer){
+        public Builder with(final Consumer<Builder> builderConsumer){
             builderConsumer.accept(this);
             return this;
         }
 
         public MyDataLambda build(){
-            return new MyDataLambda(id,amount,reason,date);
+            return new MyDataLambda(id, amount, reason, date);
         }
     }
 }
@@ -64,10 +65,10 @@ final class MyDataLambda{
 /**
  * Demonstration
  */
-public class BuilderAdvanced {
+public class BuilderAdvanced{
     public static void main(String[] args){
         final MyDataLambda myDataLambda = new MyDataLambda
-                .Builder(5L,345f)
+                .Builder(5L, 345f)
                 .with(BuilderAdvanced::createData)
                 .build();
         System.out.println("myDataLambda = " + myDataLambda);
@@ -75,10 +76,11 @@ public class BuilderAdvanced {
 
     /**
      * Construction extracted to a private static method so we can take advantage of method's references
+     *
      * @param with
      */
     private static void createData(final MyDataLambda.Builder with){
         with.reason = "Alquiler";
-        with.date = LocalDateTime.of(1994, Month.of(5),5,15,50);
+        with.date = LocalDateTime.of(1994, Month.of(5), 5, 15, 50);
     }
 }
