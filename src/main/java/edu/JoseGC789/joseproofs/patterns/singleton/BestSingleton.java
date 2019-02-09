@@ -4,6 +4,7 @@ package edu.JoseGC789.joseproofs.patterns.singleton;
  * Enum version of singleton and the best version.
  * Be aware that this type of singleton only supports EAGER initialization.
  * If for some reason you require LAZY initialization, then you're out of luck.
+ * In a real project this class should be in its own file
  */
 enum BestConnection{
     INSTANCE("My only connect instance");

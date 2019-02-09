@@ -9,6 +9,7 @@ import lombok.ToString;
  * Lazy initialization of its instance.
  * The worst type of singleton you can implement.
  * Don't use this unless you have a valid reason.
+ * In a real project this class should be in its own file
  */
 @Getter
 @ToString
@@ -34,6 +35,7 @@ final class LazyConnection{
  * Eager initialization of its instance.
  * Not the best implementation of singleton.
  * No real reason to use this over the better alternative.
+ * In a real project this class should be in its own file
  */
 @Getter
 @ToString
