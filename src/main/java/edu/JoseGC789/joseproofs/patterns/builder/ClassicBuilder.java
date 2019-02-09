@@ -73,7 +73,7 @@ final class MyDataClassic{
 /**
  * Demonstration
  */
-public class BuilderClassic{
+public final class ClassicBuilder{
     public static void main(String[] args){
         final MyDataClassic myDataClassic = new MyDataClassic
                 .Builder(5L, 123f)

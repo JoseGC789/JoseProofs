@@ -65,11 +65,11 @@ final class MyDataLambda{
 /**
  * Demonstration
  */
-public class BuilderAdvanced{
+public final class AdvancedBuilder{
     public static void main(String[] args){
         final MyDataLambda myDataLambda = new MyDataLambda
                 .Builder(5L, 345f)
-                .with(BuilderAdvanced::createData)
+                .with(AdvancedBuilder::createData)
                 .build();
         System.out.println("myDataLambda = " + myDataLambda);
     }
