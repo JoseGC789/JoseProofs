@@ -1,12 +1,16 @@
 package edu.JoseGC789.joseproofs.patterns.builder;
 
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.function.Consumer;
 
+/**
+ * Example immutable data-class...
+ * In a real project this class's scope should be set to public and be in its own separate file.
+ */
 @Getter
 @ToString
 @EqualsAndHashCode
@@ -16,6 +20,13 @@ final class MyDataLambda{
     private final String reason;
     private final LocalDateTime date;
 
+    /**
+     * Force data-classes to be non-instantiable and immutable.
+     * @param id
+     * @param amount
+     * @param reason
+     * @param date
+     */
     private MyDataLambda(final Long id, final float amount, final String reason, final LocalDateTime date){
         this.id = id;
         this.amount = amount;
@@ -23,6 +34,11 @@ final class MyDataLambda{
         this.date = date;
     }
 
+    /**
+     * Functional programming's approach at a builder
+     * May confuse the heck out of you if you don't anything about functional programming, lambdas expressions and method references
+     * If you don't need a constructor, you can turn it into an inner class.
+     */
     public static final class Builder{
         private final Long id;
         public float amount;
@@ -45,18 +61,24 @@ final class MyDataLambda{
     }
 }
 
-public class BuilderLambda{
+/**
+ * Demonstration
+ */
+public class BuilderAdvanced {
     public static void main(String[] args){
         final MyDataLambda myDataLambda = new MyDataLambda
                 .Builder(5L,345f)
-                .with(
-                        BuilderLambda::accept)
+                .with(BuilderAdvanced::createData)
                 .build();
         System.out.println("myDataLambda = " + myDataLambda);
     }
 
-    private static void accept(final MyDataLambda.Builder $){
-        $.reason = "Alquiler";
-        $.date = LocalDateTime.now();
+    /**
+     * Construction extracted to a private static method so we can take advantage of method's references
+     * @param with
+     */
+    private static void createData(final MyDataLambda.Builder with){
+        with.reason = "Alquiler";
+        with.date = LocalDateTime.of(1994, Month.of(5),5,15,50);
     }
 }
